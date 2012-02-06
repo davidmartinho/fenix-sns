@@ -1,0 +1,3 @@
+package eu.ist.fenixcloud.sns.domain;
+
+class SimpleNotificationService;
