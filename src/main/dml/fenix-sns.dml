@@ -1,3 +1,30 @@
 package eu.ist.fenixcloud.sns.domain;
 
 class SimpleNotificationService;
+
+class Topic {
+	String name;
+}
+
+class Subscription {
+	String callbackEndpoint;
+}
+
+class Message {
+	String payload;
+}
+
+relation SNSHasTopics {
+	SimpleNotificationService playsRole simpleNotificationService { multiplicity 1..1; }
+	Topic playsRole topic { multiplicity 0..*; }
+}
+
+relation TopicsCanBeSubscribed {
+	Topic playsRole topic { multiplicity 1..1; }
+	Subscription playsRole subscription { multiplicity 0..*; }
+}
+
+relation MessagesArePublishedOnTopics {
+	Topic playsRole topic { multiplicity 1..1; }
+	Message playsRole message { multiplicity 0..*; }
+}
